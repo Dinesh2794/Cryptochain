@@ -18,7 +18,9 @@ const pubsub = new PubSub({ blockchain, transactionPool, wallet });
 const transactionMiner = new TransactionMiner({ blockchain, transactionPool, wallet, pubsub });
 
 const DEFAULT_PORT = 3000;
-const ROOT_NODE_ADDRESS = `http://localhost: ${DEFAULT_PORT}`;
+const ROOT_NODE_ADDRESS = isDevelopment ?
+`http://localhost: ${DEFAULT_PORT}`:
+ 'https://young-peak-62656.herokuapp.com';
 
 setTimeout(() => pubsub.broadcastChain(), 1000);
 
